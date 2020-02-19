@@ -111,6 +111,7 @@ def sortAndUpdateJsonDump(jsonDict: dict):
     with open("./data/EmojiAnalytics.json", 'w+') as f:
         f.write(json.dumps(dict(jsonDict)))
 
+# Gets the list of strings to be output
 def getSortedEmojiList():
     jsonPath = "./data/EmojiAnalytics.json"
     buf = ''
@@ -118,8 +119,11 @@ def getSortedEmojiList():
     finalString = ''
     i = 0
     clipMessage = 0
+
     with open(jsonPath) as f:
         buf = json.loads(f.read())
+
+    # Creates a list of formatted strings
     for emoji in buf:
         if i >= 5:
             finalString += "\n"
