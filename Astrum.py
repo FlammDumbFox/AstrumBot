@@ -19,10 +19,19 @@ async def on_ready():
 @bot.command()
 async def load(ctx, ext):
     bot.load_extension(f"cogs.{ext}")
+    await ctx.send(f"Load em **{ext}**")
 
 @bot.command()
 async def unload(ctx, ext):
     bot.unload_extension(f"cogs.{ext}")
+    await ctx.send(f"Unload em **{ext}**")
+
+
+@bot.command()
+async def reload(ctx, ext):
+    bot.unload_extension(f"cogs.{ext}")
+    bot.load_extension(f"cogs.{ext}")
+    await ctx.send(f"Reload em **{ext}**")
 
 # Cogs util: fetch files from ./cogs/{name}
 def load_cogs(folder_name):
